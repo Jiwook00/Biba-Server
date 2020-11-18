@@ -38,8 +38,11 @@ router.get('/list', async (req, res) => {
         }
       )
     );
+    const total: any = sendAllBeerList.length;
 
     if (sendAllBeerList) {
+      res.header('Access-Control-Expose-Headers', 'X-Total-Count');
+      res.set('X-Total-Count', total);
       return res.status(200).json(sendAllBeerList);
     } else {
       return res.status(404).send('리스트를 찾을 수 없습니다.');
