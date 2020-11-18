@@ -210,8 +210,9 @@ router.post('/:id', async (req, res) => {
         }
       );
       return res.status(200).json(sendbeerInfo);
+    } else {
+      return res.status(404).send('등록되어 있지 않은 맥주 입니다.');
     }
-    return res.status(404).send('등록되어 있지 않은 맥주 입니다.');
   } catch (e) {
     return res.sendStatus(500);
   }
